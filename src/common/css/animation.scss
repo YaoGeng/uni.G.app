@@ -1,0 +1,95 @@
+.animation-top{
+		transition: all 0.3s linear;
+		animation-name: toTop;
+		animation-duration: 0.3s;
+		animation-fill-mode: both;
+		animation-delay: 100ms;
+	}
+.animation-bottom{
+		transition: all 0.3s linear;
+		animation-name: toBottom;
+		animation-duration: 0.3s;
+		animation-fill-mode: both;
+		animation-delay: 100ms;
+	}
+.animation-left{
+		transition: all 0.3s linear;
+		animation-name: toLeft;
+		animation-duration: 0.3s;
+		animation-fill-mode: both;
+		animation-delay: 100ms;
+	}
+.animation-right{
+		transition: all 0.3s linear;
+		animation-name: toRight;
+		animation-duration: 0.3s;
+		animation-fill-mode: both;
+		animation-delay: 100ms;
+	}
+.animation-in{
+		transition: all 0.3s linear;
+		animation-name: outIn;
+		animation-duration: 0.3s;
+		animation-fill-mode: both;
+		animation-delay: 100ms;
+	}
+
+	@keyframes toTop {
+		0% {
+			opacity: 0;
+			transform: translate3d(0, 100%, 0);
+		}
+	
+		100% {
+			opacity: 1;
+			transform: translate3d(0, 0, 0);
+		}
+	}
+	
+	@keyframes toBottom {
+		0% {
+			opacity: 0;
+			transform: translate3d(0, -100%, 0);
+		}
+	
+		100% {
+			opacity: 1;
+			transform: translate3d(0, 0, 0);
+		}
+	}
+	
+	@keyframes toLeft {
+		0% {
+			opacity: 0;
+			transform: translate3d(100%, 0, 0);
+		}
+	
+		100% {
+			opacity: 1;
+			transform: translate3d(0, 0, 0);
+		}
+	}
+	
+	@keyframes toRight {
+		0% {
+			opacity: 0;
+			transform: translate3d(-100%, 0, 0);
+		}
+	
+		100% {
+			opacity: 1;
+			transform: translate3d(0, 0, 0);
+		}
+	}
+	
+	@keyframes outIn {
+		0% {
+			opacity: 0;
+			transform: translate3d(0, 0, 0);
+		}
+	
+		100% {
+			opacity: 1;
+			transform: translate3d(0, 0, 0);
+		}
+	}

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		<style type="text/css">
+			*{
+			    -webkit-touch-callout:none;  /*系统默认菜单被禁用*/
+			    -webkit-user-select:none; /*webkit浏览器*/
+			    -khtml-user-select:none; /*早期浏览器*/
+			    -moz-user-select:none;/*火狐*/
+			    -ms-user-select:none; /*IE10*/
+			    user-select:none;
+			}
+			body,
+			html {
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				font-family: "微软雅黑";
+			}
+
+			#allmap {
+				height: 500px;
+				width: 100%;
+				overflow: hidden;
+			}
+
+			#result {
+				height: calc(100% - 610px);
+				width: 100%;
+				font-size: 12px;
+			}
+
+			#resultText {
+				height: 70px;
+				font-size: 18px;
+				padding: 6px;
+			}
+
+			#r-result {
+				height: 40px;
+				width: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border-bottom: #A9A9A9 1px solid;
+				margin-bottom: 2px;
+				margin-top: 3px;
+			}
+
+			.btn {
+				width: 100px;
+				height: 34px;
+				border: 1px solid #999;
+				border-radius: 5px;
+				margin: 0 auto;
+				font-size: 18px;
+				text-align: center;
+				line-height: 34px;
+				color: #333;
+				background: #E8E7E3;
+			}
+		</style>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?type=webgl&v=1.0&ak=eebxqhz16m9rK2Gbl2Uxk8o92MFUVR9o"></script>
+		<!-- 引入百度地图api 携带 AK -->
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=eebxqhz16m9rK2Gbl2Uxk8o92MFUVR9o"></script>
+		<!-- 引入搜索功能 -->
+		<script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
+		<link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
+		<!-- 引入 uni-app 的 SDK -->
+		<script type="text/javascript" src="https://js.cdn.aliyun.dcloud.net.cn/dev/uni-app/uni.webview.1.5.2.js"></script>
+		<title>订单定位</title>
+	</head>
+
+	<body>
+		<!-- 顶部搜索栏 -->
+		<div id="search">
+			<div id="r-result"><input type="text" id="suggestId" size="20" placeholder="位置搜索" value="百度" style="width:100%;height:40px;" /></div>
+			<div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+		</div>
+		<!-- 地图 -->
+		<div id="allmap"></div>
+		<!-- 选中的位置回显 -->
+		<div id="result">
+			<div id="resultText"></div>
+		</div>
+
+		<script type="text/javascript">
+			var map = new BMap.Map('allmap');
+			var poi = new BMap.Point(116.307852, 40.057031); //罗马的坐标
+
+			var addressPost; //存储附近信息数据
+			var CURRENT_LNG; //记录坐标
+			var CURRENT_LAT; //记录坐标
+			var lng, lat; //记录坐标
+
+			map.centerAndZoom(poi, 18); //设置地图中心点 和 缩放等级
+			map.enableScrollWheelZoom(); //开启鼠标滚轮
+
+			function G(id) {
+				return document.getElementById(id);
+			}
+			//获取当前位置附近地址信息 --- geoc.getLocation
+			var geoc = new BMap.Geocoder();
+			var getCurrentLocation = function(lg, lt) {
+				//geoc.getLocation 获取到 坐标 以及 包含附近地址信息的数组
+				geoc.getLocation(new BMap.Point(lg, lt), function(rs) {
+					//取数组第一个地址信息为选中的位置，也可现为地址列表
+					var nearbyAddeessArr = rs.surroundingPois[0];
+					document.getElementById('resultText').innerText = '当前位置 ：' + nearbyAddeessArr.title + '——' + nearbyAddeessArr.address;
+					addressPost = nearbyAddeessArr.title + '——' + nearbyAddeessArr.address;
+					CURRENT_LNG = lg;
+					CURRENT_LAT = lt;
+				});
+			}
+
+
+			//通过浏览器获取当前定位的坐标
+			var geolocation = new BMap.Geolocation();
+			geolocation.getCurrentPosition(function(r) {
+				if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+					var mk = new BMap.Marker(r.point);
+					map.addOverlay(mk);
+					map.panTo(r.point);
+					lng = r.point.lng
+					lat = r.point.lat
+					getCurrentLocation(lng, lat)
+				} else {
+					alert('failed' + this.getStatus());
+				}
+			}, {
+				enableHighAccuracy: true
+			})
+			
+			map.addEventListener("click", function(e) {
+				map.clearOverlays(); //清除地图上所有覆盖物 marker
+				//获取坐标
+				var lng = e.point.lng;
+				var lat = e.point.lat;
+				var mk = new BMap.Marker(e.point);
+				map.addOverlay(mk);
+				getCurrentLocation(lng, lat)
+			});
+			map.addEventListener("touchmove", function(e) {
+				map.enableDragging();
+			});
+			map.addEventListener("touchend", function(e) {
+				map.disableDragging();
+			});
+			map.disableDragging();
+			map.enableScrollWheelZoom(true);
+
+
+			// 以下是地点检索功能
+
+			//创建一个search实例
+			var ac = new BMap.Autocomplete({
+				"input": "suggestId",
+				"location": map
+			});
+
+
+			var myValue; //存储地址检索结果
+			ac.addEventListener("onconfirm", function(e) { //鼠标点击下拉列表后的事件
+				var _value = e.item.value;
+				myValue = _value.province + _value.city + _value.district + _value.street + _value.business;
+				G("searchResultPanel").innerHTML = "onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
+				setPlace();
+			});
+
+			// 地图移动到检索的位置，并且标记 
+			function setPlace() {
+				map.clearOverlays(); //清除地图上所有覆盖物
+				function myFun() {
+					var pp = local.getResults().getPoi(0).point; //获取第一个智能搜索的结果
+					map.centerAndZoom(pp, 18);
+					map.addOverlay(new BMap.Marker(pp)); //添加标注
+					getCurrentLocation(pp.lng, pp.lat)
+				}
+				var local = new BMap.LocalSearch(map, { //智能搜索
+					onSearchComplete: myFun
+				});
+				local.search(myValue);
+			}
+		</script>
+	</body>
+
+</html>

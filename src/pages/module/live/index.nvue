@@ -1,0 +1,46 @@
+<template>
+    <view>
+		<!-- #ifdef APP-PLUS -->
+		<live-pusher id="livePusher" :url="url" mode="FHD"></live-pusher>
+		<button @click="startLive">开始推流（开始直播）</button>
+		<button @click="stopLive">结束推流</button>
+		
+		<video src="https://99137.liveplay.myqcloud.com/live/uniapp.flv" style="width: 100vw;" 
+		 :autoplay="true" controls></video>
+		<!-- #endif -->
+    </view>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            url: 'rtmp://99137.livepush.myqcloud.com/live/uni?txSecret=f28894c5571475d1a0232d367c725afe&txTime=5EF3787F',
+            enableCamera: false,
+            context: null
+        };
+    },
+    onReady() {
+        this.context = uni.createLivePusherContext('livePusher', this);
+    },
+    methods: {
+        EnableCamera() {
+            this.enableCamera = true;
+        },
+        startLive() {
+            this.context.start({
+                success: a => {
+                    console.log('livePusher.start:' + JSON.stringify(a));
+                }
+            });
+        },
+        stopLive() {
+            this.context.stop({
+                success: a => {
+                    console.log(JSON.stringify(a));
+                }
+            });
+        }
+    }
+};
+</script>

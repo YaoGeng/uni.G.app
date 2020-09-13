@@ -1,0 +1,55 @@
+/* uni中当外view高度设为100%时，h5中和滚动高度相关的都执行不了 */
+.p-flex-box{
+	display: -webkit-flex;
+	display: flex;
+	flex-direction: column;
+}
+.p-flex-box__row{
+		-webkit-flex-direction: row;
+		flex-direction: row;
+	}
+	
+	.p-flex-box__center{
+		justify-content: center;
+	}
+	
+	.p-flex-box__around{
+		justify-content: space-around;
+	}
+	
+	.p-flex-box__between{
+		justify-content: space-between;
+	}
+	
+	.p-flex-box__flex1{
+		flex: 1;
+	}
+	
+	.p-flex-box__flex2{
+		flex: 2;
+	}
+	
+	.p-flex-box__flex3{
+		flex: 3;
+	}
+	
+	.p-flex-box__flex4{
+		flex: 4;
+	}
+	
+	.p-flex-box__flexd{
+		-webkit-flex: 0 0 auto;
+		flex: 0 0 auto;
+	}
+	
+	.p-flex-box__auto{
+		-webkit-flex: 1;
+		flex: 1;
+	}
+	
+	.p-flex-box__auto-scrolly{
+		-webkit-flex: 1;
+		flex: 1;
+		overflow-x: hidden;
+		overflow-y: auto;
+	}

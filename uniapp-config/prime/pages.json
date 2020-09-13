@@ -1,0 +1,194 @@
+{
+	"pages": [
+		/* ↓xxx↓ */
+		/* ↑xxx↑ */
+
+		/* ↓登录↓ */
+		{
+			"path": "pages/module/login/index",
+			"style": {
+				"navigationBarTitleText": "登录",
+				"navigationStyle": "custom",
+				"app-plus": {
+					"animationType": "fade-in",
+					"animationDuration": 300
+				}
+			}
+		},
+		/* ↑登录↑ */
+
+		/* ↓嵌入应用↓ */
+		{
+			"path": "pages/module/webViewApp/index"
+		},
+		/* ↑嵌入应用↑ */
+		
+		/* ↓首页↓ */
+		{
+			"path": "pages/module/home/index",
+			"style": {
+				"navigationBarTitleText": "首页",
+				//#ifdef APP-PLUS||H5
+				"navigationBarTextStyle": "white",
+				//#endif
+				"transparentTitle": "auto",
+				"app-plus": {
+					"titleNView": {
+						"titleColor": "#000000",
+						"buttons": [{
+								"fontSrc": "/static/currency/other/font/uni.ttf",
+								"text": "\ue263",
+								"width": "40px",
+								"fontSize": "28px",
+								"color": "#000",
+								"background": "rgba(0,0,0,0)"
+							},
+							{
+								"fontSrc": "/static/currency/other/font/uni.ttf",
+								"text": "\ue612",
+								"width": "40px",
+								"fontSize": "28px",
+								"color": "#000",
+								"background": "rgba(0,0,0,0)",
+								"float": "left"
+							}
+						],
+						"searchInput": {
+							"backgroundColor": "#f0f0f0",
+							"borderRadius": "6px",
+							"placeholder": "搜索",
+							"disabled": true
+						}
+					}
+				}
+			}
+		},
+		/* ↑首页↑ */
+
+		/* ↓个人↓ */
+		{
+			"path": "pages/module/user/index",
+			"style": {
+				"navigationBarTitleText": "个人",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true
+			}
+		},
+		/* ↑个人↑ */
+
+		/* ↓设置↓ */
+		{
+			"path": "pages/module/setting/index",
+			"style": {
+				"navigationBarTitleText": "设置"
+			}
+		},
+		/* ↑设置↑ */
+		
+		/* ↓新闻↓ */
+		{ //新闻列表
+			"path": "pages/module/news/index",
+			"style": {
+				"enablePullDownRefresh": true,
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"fontSrc": "/static/currency/other/font/fontawesome-webfont.ttf",
+							"text": "\uf0c9",
+							"width": "40px",
+							"fontSize": "22px",
+							"color": "#000",
+							"background": "rgba(0,0,0,0)"
+						}]
+					}
+				}
+			}
+		},
+		{ //新闻详情
+			"path": "pages/module/news/detail"
+		},
+		/* ↑新闻↑ */
+
+		/* ↓消息↓ */
+		{
+			"path": "pages/module/notice/index",
+			"style": {
+				"navigationBarTitleText": "消息",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true
+			}
+		},
+		/* ↑消息↑ */
+
+		/* ↓玩校↓ */
+		{
+			"path": "pages/module/live/index",
+			"style": {
+				"navigationBarTitleText": "玩校",
+				"navigationStyle": "custom"
+			}
+		},
+		/* ↑玩校↑ */
+
+		/* ↓应用市场↓ */
+		{
+			"path": "pages/module/appStore/index",
+			"style": {
+				"navigationBarTitleText": "应用市场",
+				"app-plus": {
+					"titleNView": {
+						"searchInput": {
+							"backgroundColor": "#f0f0f0",
+							"borderRadius": "6px",
+							"placeholder": "搜索",
+							"disabled": true
+						}
+					}
+				}
+			}
+		}
+		/* ↑应用市场↑ */
+		
+
+	],
+	"tabBar": {
+		"blurEffect": "extralight",
+		"color": "#7A7E83",
+		"selectedColor": "#1cb3cc",
+		//#ifdef APP-PLUS
+		"borderStyle": "#eaeaea",
+		//#endif
+		"height": "50px",
+		"fontSize": "10px",
+		"iconWidth": "24px",
+		"spacing": "3px",
+		"list": [{
+				"pagePath": "pages/module/live/index",
+				"text": "玩校"
+			},
+			{
+				"pagePath": "pages/module/home/index",
+				"text": "首页",
+				"iconPath": "static/aliasStatic/image/app/bar_logo.png",
+				"selectedIconPath": "static/aliasStatic/image/app/bar_logo_active.png"
+			},
+			{
+				"pagePath": "pages/module/user/index",
+				"text": "个人"
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "loading...",
+		"navigationBarBackgroundColor": "#fff",
+		"backgroundColor": "#fff",
+		"app-plus": {
+			"softinputNavBar": "none",
+			"scrollIndicator": "none",
+			"pullToRefresh": {
+				"color": "#1cb3cc"
+			}
+		}
+	}
+}
