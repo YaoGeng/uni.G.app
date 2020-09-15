@@ -69,118 +69,118 @@
 				isLogining: false, //登录请求状态
 				isShowAd: false, //广告展示状态
 				isShowLogin: false,
-				loginData:{
-						"appInfoList": [{
-							"appId": 85,
-							"appSeq": 10,
-							"appType": 4,
-							"backbtncon": 0,
-							"defaultPage": 1,
-							"downloadUrl": null,
-							"downloadUrlIOS": null,
-							"embedType": 1,
-							"icon": "studyIcon icon-flag",
-							"integrate": 1,
-							"name": "投票",
-							"version": "1",
-							"visitUrl": "https://www.app8848.com/h5gTest/?f_login={{token}}&f_login_redirect=/vote"
-						}, {
-							"appId": 10415,
-							"appSeq": 5,
-							"appType": 1,
-							"backbtncon": 1,
-							"defaultPage": 2,
-							"downloadUrl": null,
-							"downloadUrlIOS": null,
-							"embedType": 0,
-							"icon": "blueTheme icon-xinwen",
-							"integrate": 1,
-							"name": "新闻资讯",
-							"version": "",
-							"visitUrl": "/pages/module/news/index"
-						}, {
-							"appId": 10416,
-							"appSeq": 6,
-							"appType": 1,
-							"backbtncon": 0,
-							"defaultPage": 2,
-							"downloadUrl": null,
-							"downloadUrlIOS": null,
-							"embedType": 1,
-							"icon": "blueTheme icon-diannao",
-							"integrate": 2,
-							"name": "webView应用",
-							"version": "",
-							"visitUrl": "https://sortablejs.github.io/Vue.Draggable/#/transition-example-2"
-						}, {
-							"appId": 10417,
-							"appSeq": 7,
-							"appType": 1,
-							"backbtncon": 0,
-							"defaultPage": 2,
-							"downloadUrl": null,
-							"downloadUrlIOS": null,
-							"embedType": 4,
-							"icon": "blueTheme icon-fuwu",
-							"integrate": 2,
-							"name": "外部浏览器",
-							"version": "",
-							"visitUrl": "https://www.baidu.com/"
-						}, {
-							"appId": 10418,
-							"appSeq": 8,
-							"appType": 1,
-							"backbtncon": 0,
-							"defaultPage": 2,
-							"downloadUrl": "https://www.baidu.com",
-							"downloadUrlIOS": "https://itunes.apple.com/us/app/i-zhong-guo-hai-da/id1173749785?l=zh&ls=1&mt=8",
-							"embedType": 0,
-							"icon": "blueTheme icon-zhuanti",
-							"integrate": 3,
-							"name": "三方应用",
-							"version": "",
-							"visitUrl": null
-						}, {
-							"appId": 10419,
-							"appSeq": 9,
-							"appType": 1,
-							"backbtncon": 0,
-							"defaultPage": 1,
-							"downloadUrl": null,
-							"downloadUrlIOS": null,
-							"embedType": 1,
-							"icon": "studyIcon icon-online",
-							"integrate": 2,
-							"name": "H5应用",
-							"version": "",
-							"visitUrl": "https://www.app8848.com/test.html"
-						}, {
-							"appId": 10436,
-							"appSeq": 14,
-							"appType": 1,
-							"backbtncon": 0,
-							"defaultPage": 1,
-							"downloadUrl": null,
-							"downloadUrlIOS": null,
-							"embedType": 1,
-							"icon": "ltAppStore color-icon_xiaoyuanditu",
-							"integrate": 2,
-							"name": "地图",
-							"version": "",
-							"visitUrl": "/hybrid/html/mapTest.html"
-						}],
-						"token": ["", ""],
-						"userBaseInfo": {
-							"headImage": "http://seafile.app8848.com/f/20f99108afca4e5680a3/?dl=1&type=png",
-							"nickName": "yg",
-							"realName": "yg",
-							"userId": 35018,
-						},
-						"userLoginInfo": {
-							"phone": "",
-							"userId": 35018,
-							"userName": "yg",
-						}
+				loginData: {
+					"appInfoList": [{
+						"appId": 85, //应用id
+						"appSeq": 10, //应用排序
+						"appType": 4, //应用类型
+						"backbtncon": 0,
+						"defaultPage": 1, //所属页
+						"downloadUrl": null,
+						"downloadUrlIOS": null,
+						"embedType": 1, //集成方式
+						"icon": "studyIcon icon-flag", //svg标识
+						"integrate": 1, //打开方式
+						"name": "投票",
+						"version": "1",
+						"visitUrl": "https://www.baidu.com/?token={{token}}"
+					}, {
+						"appId": 10415,
+						"appSeq": 5,
+						"appType": 1,
+						"backbtncon": 1,
+						"defaultPage": 2,
+						"downloadUrl": null,
+						"downloadUrlIOS": null,
+						"embedType": 0,
+						"icon": "blueTheme icon-xinwen",
+						"integrate": 1,
+						"name": "新闻资讯",
+						"version": "",
+						"visitUrl": "/pages/module/news/index"
+					}, {
+						"appId": 10416,
+						"appSeq": 6,
+						"appType": 1,
+						"backbtncon": 0,
+						"defaultPage": 2,
+						"downloadUrl": null,
+						"downloadUrlIOS": null,
+						"embedType": 1,
+						"icon": "blueTheme icon-diannao",
+						"integrate": 2,
+						"name": "webView应用",
+						"version": "",
+						"visitUrl": "https://www.baidu.com"
+					}, {
+						"appId": 10417,
+						"appSeq": 7,
+						"appType": 1,
+						"backbtncon": 0,
+						"defaultPage": 2,
+						"downloadUrl": null,
+						"downloadUrlIOS": null,
+						"embedType": 4,
+						"icon": "blueTheme icon-fuwu",
+						"integrate": 2,
+						"name": "外部浏览器",
+						"version": "",
+						"visitUrl": "https://www.baidu.com/"
+					}, {
+						"appId": 10418,
+						"appSeq": 8,
+						"appType": 1,
+						"backbtncon": 0,
+						"defaultPage": 2,
+						"downloadUrl": "https://www.baidu.com",
+						"downloadUrlIOS": "https://itunes.apple.com/us/app/i-zhong-guo-hai-da/id1173749785?l=zh&ls=1&mt=8",
+						"embedType": 0,
+						"icon": "blueTheme icon-zhuanti",
+						"integrate": 3,
+						"name": "三方应用",
+						"version": "",
+						"visitUrl": null
+					}, {
+						"appId": 10419,
+						"appSeq": 9,
+						"appType": 1,
+						"backbtncon": 0,
+						"defaultPage": 1,
+						"downloadUrl": null,
+						"downloadUrlIOS": null,
+						"embedType": 1,
+						"icon": "studyIcon icon-online",
+						"integrate": 2,
+						"name": "H5应用",
+						"version": "",
+						"visitUrl": "https://www.baidu.com"
+					}, {
+						"appId": 10436,
+						"appSeq": 14,
+						"appType": 1,
+						"backbtncon": 0,
+						"defaultPage": 1,
+						"downloadUrl": null,
+						"downloadUrlIOS": null,
+						"embedType": 1,
+						"icon": "ltAppStore color-icon_xiaoyuanditu",
+						"integrate": 2,
+						"name": "地图",
+						"version": "",
+						"visitUrl": "/hybrid/html/mapTest.html"
+					}],
+					"token": ["", ""],
+					"userBaseInfo": {
+						"headImage": "http://seafile.app8848.com/f/20f99108afca4e5680a3/?dl=1&type=png",
+						"nickName": "yg",
+						"realName": "yg",
+						"userId": 35018,
+					},
+					"userLoginInfo": {
+						"phone": "",
+						"userId": 35018,
+						"userName": "yg",
+					}
 				}
 			}
 		},
@@ -229,21 +229,21 @@
 				}
 
 				this.isLogining = true;
-				
+
 				let data = this.loginData
 				//登录成功操作.then
 				this.setLoginStatus(data);
 				uni.switchTab({
 					url: '../home/index',
 				});
-				
-			/* 	//登录失败操作.catch
-				this.isShowAd = false;
-				this.isShowLogin = true; */
-				
+
+				/* 	//登录失败操作.catch
+					this.isShowAd = false;
+					this.isShowLogin = true; */
+
 				//登录完成.finally
 				this.isLogining = false;
-			
+
 			},
 
 			/* 跳过登录 */
@@ -254,18 +254,18 @@
 					title: '登录中',
 					mask: true
 				});
-				
+
 				//登录成功操作.then
 				this.setLoginStatus(data);
-				
+
 				/* //登录失败操作.catch
 				uni.clearStorage();
 				this.isShowAd = false;
 				this.isShowLogin = true; */
-				
+
 				//登录完成.finally
 				this.isLogining = false;
-				
+
 			},
 
 			/* 存储用户数据 */

@@ -26,7 +26,7 @@
 
 			this.jumpTime();
 
-			imageCache.netImgToBase64("https://dss0.baidu.com/-Po3dSag_xI4khGko9WTAnF6hhy/super/crop=0,183,2000,1243/sign=abde275d43086e067ee7650b3f3857c5/bd3eb13533fa828bb559268ff21f4134970a5a67.jpg")
+			imageCache.netImgToBase64("http://seafile.app8848.com/f/20f99108afca4e5680a3/?dl=1&type=png")
 				.then((data) => {
 					uni.setStorage({
 						key: 'adImgInfo',

@@ -43,22 +43,32 @@ function netImgToBase64(imageUrl){
 			method: 'GET',
 			responseType: 'arraybuffer',
 			success: res => {
-				let base64 = uni.arrayBufferToBase64(res.data);
+				let base64 = wx.arrayBufferToBase64(res.data);
 				base64 = 'data:image/jpeg;base64,' + base64;
 				resolve(base64)
 			},
 			fail: (errMsg)=>{
 				console.log(errMsg);
-				uni.showToast({
-					title: "上传图片失败",
-					icon: "none",
-					position: 'bottom'
-				})
 				reject()
 			}
 		})
 	})
 	
+}
+
+function netImgListToBase64(imgList,callBack){
+	Promise.all(imgList.map(img => netImgToBase64(img)))
+	  .then(res => {
+	    
+	  })
+	  .catch(error => {
+		uni.showToast({
+			title: "图片转码失败",
+			icon: "none",
+			position: 'bottom'
+		})
+	    console.error(error)
+	  })
 }
 
 /* 本地、临时图片地址转base64 */

@@ -256,10 +256,9 @@ function timeStorage(onf, callback) {
 	}
 	
 	let val = uni.getStorageSync(onf.key),
-	oldTime,
 	nowTime = new Date().getTime();
 	if(val){
-		if(val.oldTime>nowTime){
+		if(val.time>nowTime){
 			//没过期
 			return val
 		}else{

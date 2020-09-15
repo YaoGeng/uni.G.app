@@ -20,24 +20,24 @@ export default {
 				"appId": 0,
 				"appName": "首页",
 				"id": 975,
-				"imgLink": "",
+				"imgLink": "https://www.baidu.com",
 				"imgSeq": 1,
-				"imgUrl": "",
+				"imgUrl": "http://seafile.app8848.com/f/20f99108afca4e5680a3/?dl=1&type=png",
 			}, {
 				"appId": 0,
 				"appName": "首页",
 				"id": 976,
-				"imgLink": "",
+				"imgLink": "https://www.baidu.com",
 				"imgSeq": 2,
-				"imgUrl": "",
+				"imgUrl": "http://seafile.app8848.com/f/20f99108afca4e5680a3/?dl=1&type=png",
 
 			}, {
 				"appId": 0,
 				"appName": "首页",
 				"id": 977,
-				"imgLink": "",
+				"imgLink": "https://www.baidu.com",
 				"imgSeq": 3,
-				"imgUrl": "",
+				"imgUrl": "http://seafile.app8848.com/f/20f99108afca4e5680a3/?dl=1&type=png",
 			}]
 			return Promise.all(list.map(item => imageCache.netImgToBase64(item.imgUrl)
 					.then((data) => {
