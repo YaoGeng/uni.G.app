@@ -1,7 +1,7 @@
 module.exports = {
 	project: {
-		alias: "myapp",
-		name: "我的app",
+		alias: "default",
+		name: "MyApp",
 		campusId: 1
 	},
 

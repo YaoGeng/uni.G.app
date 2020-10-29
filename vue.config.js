@@ -1,15 +1,12 @@
 //获取项目配置↓
 
 const shell = require("shelljs");
-
-let manifestJson = shell.cat('./src/manifest.json');
-console.log("输出manifest.json源码中description：" + JSON.parse(manifestJson).description);
-let alias = JSON.parse(manifestJson).description;
+const getAlias = require("./build/getAlias")
+let alias = getAlias();
 let getProjectConfig = require("./build/getConfig");
-
 let projectConfig = getProjectConfig(alias);
 
-console.log("运行项目：" + projectConfig.project.name);
+console.log("运行项目：" + projectConfig.project.name+"\n↓↓↓");
 
 //获取项目配置↑
 
@@ -20,7 +17,7 @@ if(process.env.NODE_ENV === 'development'){
 	const fileWatch = require("./build/chokidarWatch");
 	fileWatch.nodeWatch(alias);
 	fileWatch.chokidarRead(alias);
-	console.log("执行监听res和uniapp-config")
+	console.log("执行监听res和uniapp-config------------"+"目标alias："+alias+"\n↓↓↓")
 }
 /* 执行监听脚本 */
 

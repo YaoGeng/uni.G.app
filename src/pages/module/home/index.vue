@@ -6,7 +6,7 @@
 			<image class="top-ad-img" :src="topAdImgUrl" mode="aspectFill"></image>
 			<view class="top-ad-bg"></view>
 			<view class="top-ad-btn" hover-class="top-ad-btn-hover" hover-start-time="0" hover-stay-time="0" @click.stop="toAd()">
-				<image src="/static/currency/image/home/home_to_ad.png" mode="aspectFit"></image>
+				<image src="/static/commonStatic/image/home/home_to_ad.png" mode="aspectFit"></image>
 			</view>
 
 			<!-- #ifdef MP-WEIXIN -->

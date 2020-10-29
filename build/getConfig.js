@@ -20,11 +20,7 @@ function getProjectConfig(alias){
 function loadProjectConfig(alias){
 	var config = null;
 
-	try{
-		config = require("../mc-campus-config/spec_config/" + alias + "_config");
-	}catch(e){
-		console.log(e);
-	}
+	config = require(alias !== "default" ? "../mc-campus-config/spec_config/" + alias + "_config" : "../mc-campus-config/default_config");
 
 	return config;
 }

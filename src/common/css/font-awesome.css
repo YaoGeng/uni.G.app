@@ -6,8 +6,8 @@
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url('./static/currency/other/font/fontawesome-webfont.eot?v=4.7.0');
-  src: url('./static/currency/other/font/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), url('./static/currency/other/font/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), url('./static/currency/other/font/fontawesome-webfont.woff?v=4.7.0') format('woff'), url('./static/currency/other/font/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), url('./static/currency/other/font/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+  src: url('./static/commonStatic/other/font/fontawesome-webfont.eot?v=4.7.0');
+  src: url('./static/commonStatic/other/font/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), url('./static/commonStatic/other/font/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), url('./static/commonStatic/other/font/fontawesome-webfont.woff?v=4.7.0') format('woff'), url('./static/commonStatic/other/font/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), url('./static/commonStatic/other/font/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }

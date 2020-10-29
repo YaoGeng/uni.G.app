@@ -7,7 +7,6 @@ const mkdirp = require('mkdirp');
 
 /* chokidar监听配置文件变化 只监听变化 新增删除不做处理 */
 function chokidarRead(alias) {
-	console.log("监听配置目录" + '../uniapp-config/' + alias + "/")
 	/* 配置文件 */
 	const watcherConfig = Chokidar.watch(path.join(__dirname, '../uniapp-config/' + alias + "/"), {
 		persistent: true,
@@ -39,14 +38,16 @@ function chokidarRead(alias) {
 /* node-watch监听资源变化 监听增删改 替换static */
 function nodeWatch(alias) {
 	let watchOver;
-	watch(path.join(__dirname, '../res/currency/'), {
+
+	/* 监听公共资源文件夹 */
+	watch(path.join(__dirname, '../res/commonStatic/'), {
 		recursive: true
 	}, (evt, name) => {
 		console.log('%s changed', evt, name);
 		clearTimeout(watchOver);
 		watchOver = setTimeout(() => {
 			console.log("资源更改，执行替换")
-			rimraf(path.join(__dirname, '../src/static/currency'), (err) => {
+			rimraf(path.join(__dirname, '../src/static/commonStatic'), (err) => {
 				setTimeout(() => {
 					currencyMkdir();
 				}, 100)
@@ -54,7 +55,8 @@ function nodeWatch(alias) {
 		}, 100);
 	});
 
-	watch(path.join(__dirname, '../res/' + alias + '/aliasStatic/'), {
+	/* 只做当前别名资源文件夹监听 */
+	watch(path.join(__dirname, '../res/' + alias + '/'), {
 		recursive: true
 	}, (evt, name) => {
 		console.log('%s changed', evt, name);
@@ -72,7 +74,7 @@ function nodeWatch(alias) {
 
 /* 删除原static */
 function rmStatic(alias) {
-	rimraf(path.join(__dirname, '../src/static/currency'), (err) => {
+	rimraf(path.join(__dirname, '../src/static/commonStatic'), (err) => {
 		setTimeout(() => {
 			currencyMkdir();
 		}, 100)
@@ -86,16 +88,12 @@ function rmStatic(alias) {
 
 /* 创建复制公共资源 */
 function currencyMkdir() {
-	mkdirp(path.join(__dirname, '../src/static/currency')).then(made => {
-		shell.cp('-Rf', path.join(__dirname, '../res/currency/'), path.join(__dirname, '../src/static/'));
-	})
+	shell.cp('-Rf', path.join(__dirname, '../res/commonStatic/'), path.join(__dirname, '../src/static/'));
 }
 
 /* 创建复制别名资源 */
 function aliasStaticMkdir(alias) {
-	mkdirp(path.join(__dirname, '../src/static/aliasStatic')).then(made => {
-		shell.cp('-Rf', path.join(__dirname, `../res/${alias}/aliasStatic/`), path.join(__dirname, '../src/static/'));
-	})
+	shell.cp('-Rf', path.join(__dirname, `../res/${alias}/`), path.join(__dirname, '../src/static/aliasStatic'));
 }
 
 module.exports = {

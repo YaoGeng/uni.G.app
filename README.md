@@ -17,7 +17,7 @@ npm run build:<mode> --alias <xxx>
 
 ### HBuilderX 运行时靠读取src下manifest.json中description字段值获取项目alias的，所以没有run dev前直接打包的话，执行 npm run copy --alias <xxx> 保证src下配置文件是对应alias的资源
 
-# manifest.json中应用描述值需填上构建alias(注：源码视图中为description字段)
+# 此项目适用于 webapp或h5 仅供学习参考
 
 ## 打app时nvue文件预处理样式抛错不用管，nvue文件用于处理原生app渲染时媒体容器层级等问题，详细使用见官方文档
 
@@ -54,13 +54,12 @@ npm run build:<mode> --alias <xxx>
 		pages.json —— 路由及页面配置
 	
 	res —— 开发时静态资源直接放这里 已监听文件变化
-		currency —————————————— 公共资源 对应 src/static/currency
+		commonStatic —————————————— 公共资源 对应 src/static/commonStatic
 			image ————————————— 图片资源
 			other ————————————— 其他资源mp3等
 		<alias>  —————————————— 别名目录
-			aliasStatic  —————— 别名资源文件夹 对应 src/static/aliasStatic
-				image ————————————— 图片资源
-				other ————————————— 其他资源mp3等
+			image ————————————— 图片资源
+			other ————————————— 其他资源mp3等
 			
 	src 
 		common —— 公共资源
@@ -72,7 +71,7 @@ npm run build:<mode> --alias <xxx>
 			component —— 公用组件
 		static —— 静态资源目录（只能放这里，监听res中文件变化，替换到static下）git已排除
 			aliasStatic —— 别名资源
-			currency  ———— 公共资源
+			commonStatic  ———— 公共资源
 		store —— 公共状态仓库
 		manifest.json —— app配置（会被替换，git排除）
 		pages.json —— 路由及页面配置（会被替换，git排除）

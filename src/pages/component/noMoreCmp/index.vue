@@ -1,6 +1,6 @@
 <template>
 	<view class="no-more-cmp">
-		<image src="/static/currency/image/home/iconfont.svg"></image>
+		<image src="/static/commonStatic/image/home/iconfont.svg"></image>
 		<view class="loading-box">
 			<i class="fa fa-circle-o-notch fa-spin"></i>
 			<text>
