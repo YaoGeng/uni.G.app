@@ -63,7 +63,7 @@ function openApp(appId, data) {
 				console.log("打开网络地址：" + visitUrl);
 				let appInfoCopy = appInfo;
 				appInfoCopy.visitUrl = visitUrl;
-				this.$routeX.push({
+				this.$routeLink.push({
 					name: appInfo.name,
 					url: "/pages/module/webViewApp/index",
 					params: appInfoCopy
@@ -71,7 +71,7 @@ function openApp(appId, data) {
 			} else {
 				//只有新平台有的应用
 				console.log("打开内置应用：", appInfo.name);
-				this.$routeX.push({
+				this.$routeLink.push({
 					name: appInfo.name,
 					url: appInfo.visitUrl,
 					params: appInfo
@@ -100,7 +100,7 @@ function openApp(appId, data) {
 			// #ifdef APP-PLUS
 			/* APP端 */
 			if (appInfo.embedType != 4) {
-				this.$routeX.push({
+				this.$routeLink.push({
 					name: appInfo.name,
 					url: "/pages/module/webViewApp/index",
 					params: appInfoCopy
@@ -113,7 +113,7 @@ function openApp(appId, data) {
 			// #ifdef H5
 			/* H5端 */
 			if (appInfo.embedType != 4) {
-				this.$routeX.push({
+				this.$routeLink.push({
 					name: appInfo.name,
 					url: "/pages/module/webViewApp/index",
 					params: appInfoCopy
@@ -124,7 +124,7 @@ function openApp(appId, data) {
 			// #endif
 
 			// #ifdef MP-WEIXIN
-			this.$routeX.push({
+			this.$routeLink.push({
 				name: appInfo.name,
 				url: "/pages/module/webViewApp/index",
 				params: appInfoCopy

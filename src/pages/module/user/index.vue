@@ -163,7 +163,7 @@
 						this.$openApp(data.linkAppid);
 						break;
 					case 2:
-						this.$routeX.push({
+						this.$routeLink.push({
 							name: data.mainTitle,
 							url: "/pages/module/webViewApp/index",
 							params: {
@@ -177,7 +177,7 @@
 			/* 跳转设置 */
 			toSetting(){
 				console.log(11)
-				this.$routeX.push({
+				this.$routeLink.push({
 					name: "设置",
 					url: "/pages/module/setting/index"
 				});

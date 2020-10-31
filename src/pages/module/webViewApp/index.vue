@@ -12,10 +12,10 @@
 			return {
 				url: '',
 				webviewStyles: {
-									progress: {
-				                        color: "<!-- @echo ui.themeColor -->"
-				                    }
-				                }
+					progress: {
+				        color: "<!-- @echo ui.themeColor -->"
+				    }
+				}
 			}
 		},
 
@@ -33,8 +33,8 @@
 		},
 
 		onLoad() {
-			if (this.$parseURL() && this.$parseURL().visitUrl) {
-				this.url = this.$parseURL().visitUrl;
+			if (this.$routeParams() && this.$routeParams().visitUrl) {
+				this.url = this.$routeParams().visitUrl;
 			}
 		},
 		

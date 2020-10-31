@@ -1,12 +1,19 @@
 <script>
 	export default {
 		onLaunch: () => {
-			console.log('App Launch学校配置', MAIN_CONFIG);
+			console.log('App Launch配置', MAIN_CONFIG);
 
 			//清除token后刷新到登录
 			//#ifdef H5
 			uni.getStorage({
 				key: "token",
+				success: () => {
+					// setTimeout(()=>{
+					// 	uni.setNavigationBarTitle({
+					// 		title: uni.getStorageSync("thisPageInfo").name
+					// 	});
+					// },100)
+				},
 				fail: () => {
 					uni.clearStorage();
 					uni.reLaunch({

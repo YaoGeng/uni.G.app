@@ -1,5 +1,6 @@
 const shell = require("shelljs");
 const path = require('path')
+const fs = require('fs')
 
 /* 单纯获取构建命令别称 */
 const getAlias = require("./getAlias")
@@ -21,4 +22,11 @@ console.log("构建重导配置文件pages.json和manifest.json\n↓↓↓");
 /* 构建重导资源文件 */
 const fileWatch = require("./chokidarWatch");
 console.log("构建重导res下资源文件\n↓↓↓");
-fileWatch.rmStatic(alias);
+
+let stat = fs.existsSync(path.join(__dirname, '../res/' + alias)); 
+
+fileWatch.rmStatic(stat?alias:'default');
+
+
+
+

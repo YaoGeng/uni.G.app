@@ -1,6 +1,8 @@
 //获取项目配置↓
 
 const shell = require("shelljs");
+const path = require('path');
+const fs = require('fs');
 const getAlias = require("./build/getAlias")
 let alias = getAlias();
 let getProjectConfig = require("./build/getConfig");
@@ -15,7 +17,8 @@ console.log("运行项目：" + projectConfig.project.name+"\n↓↓↓");
 /* 执行监听脚本 */
 if(process.env.NODE_ENV === 'development'){
 	const fileWatch = require("./build/chokidarWatch");
-	fileWatch.nodeWatch(alias);
+	let stat = fs.existsSync(path.join(__dirname, '../res/' + alias)); 
+	fileWatch.nodeWatch(stat?alias:'default');
 	fileWatch.chokidarRead(alias);
 	console.log("执行监听res和uniapp-config------------"+"目标alias："+alias+"\n↓↓↓")
 }
@@ -23,9 +26,8 @@ if(process.env.NODE_ENV === 'development'){
 
 
 
-/*插件↓ （uni中npm三方依赖用require.resolve()引入,use()、loader()直接使用不加new）*/
+/*插件↓*/
 
-const path = require('path');
 // const preprocessLoader = require.resolve("preprocess-loader");
 
 /*插件↑*/

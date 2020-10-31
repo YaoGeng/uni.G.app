@@ -126,7 +126,7 @@
 				onceSetDown: false,
 
 				/* 顶部广告卡地址 */
-				topAdImgUrl: uni.getStorageSync("adImgInfo").url,
+				topAdImgUrl: "",
 
 				/* 抽屉状态 */
 				isShowDrawer: false,
@@ -166,6 +166,7 @@
 
 		onLoad() {
 			uni.showNavigationBarLoading();
+			this.getAdImgUrL();
 			this.bannerFilter();
 			this.getCardList();
 		},
@@ -209,11 +210,26 @@
 				this.isShowDrawer = false
 			},
 
+			/* 广告地址处理 */
+			getAdImgUrL(){
+				uni.getStorage({
+					key:"adImgInfo",
+					success:(res)=>{
+						this.topAdImgUrl = res.data.url
+					},
+					fail:()=>{
+						/* 重新请求接口 */
+						this.topAdImgUrl = "http://seafile.app8848.com/f/20f99108afca4e5680a3/?dl=1&type=png"
+					}
+				})
+				
+			},
+
 			/* 去广告链接 */
 			toAd() {
 				let adImgInfo = uni.getStorageSync("adImgInfo");
 				if (adImgInfo.link) {
-					this.$routeX.push({
+					this.$routeLink.push({
 						name: adImgInfo.name,
 						url: "/pages/module/webViewApp/index",
 						params: {
@@ -260,7 +276,7 @@
 			bannerClick(item) {
 				console.log(item)
 				if (item.imgLink) {
-					this.$routeX.push({
+					this.$routeLink.push({
 						name: JSON.parse(item.imgLink).name,
 						url: "/pages/module/webViewApp/index",
 						params: {
@@ -310,7 +326,7 @@
 						this.$openApp(data.linkAppid);
 						break;
 					case 2:
-						this.$routeX.push({
+						this.$routeLink.push({
 							name: data.mainTitle,
 							url: "/pages/module/webViewApp/index",
 							params: {
@@ -385,7 +401,7 @@
 			},
 
 			toStore() {
-				this.$routeX.push({
+				this.$routeLink.push({
 					name: "应用中心",
 					url: "/pages/module/appStore/index"
 				})

@@ -169,7 +169,7 @@
 						"version": "",
 						"visitUrl": "/hybrid/html/mapTest.html"
 					}],
-					"token": ["", ""],
+					"token": ["token", "123456"],
 					"userBaseInfo": {
 						"headImage": "http://seafile.app8848.com/f/20f99108afca4e5680a3/?dl=1&type=png",
 						"nickName": "yg",

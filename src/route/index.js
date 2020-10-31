@@ -1,6 +1,7 @@
 /* 
 	跳转
-	this.$routeX.push({
+	this.$routeLink.push({
+		type: "navigateTo" uni跳转类型 非必
 		name: "xxx",
 		url: "/pages/module/xxx/xxx",
 		params: {} //可选
@@ -8,16 +9,19 @@
 	
 	接收参数
 	onLoad()下
-	this.$parseURL().xxx
+	this.$routeParams().xxx
  
  */
 
-import { router } from '@/route/min-router.js'
+import router from './min-router.js'
 
 let routeTimeOver = true;
 
 // 全局路由拦截器
 router.beforeEach((to, from, args, next) => {
+
+	console.log("路由跳转:\n","前往:"+to+"\n", "来自:"+from+"\n", args)
+
 	//避免连点重复跳转
 	if(routeTimeOver){
 		routeTimeOver = false;
@@ -31,6 +35,7 @@ router.beforeEach((to, from, args, next) => {
 		if(!args.name){
 			return;
 		}
+		uni.setStorageSync("thisPageInfo", args);
 		setTimeout(()=>{
 			uni.setNavigationBarTitle({
 				title: args.name

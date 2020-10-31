@@ -32,7 +32,7 @@
 			},
 			toDetail(item) {
 				if (commonUtil.isUrl(item.url)) {
-					this.$routeX.push({
+					this.$routeLink.push({
 						name: this.cardInfo.mainTitle,
 						url: "/pages/module/webViewApp/index",
 						params: {

@@ -48,7 +48,7 @@
 				if (this.imgInfo.link) {
 					clearInterval(this.runJump);
 					this.waitTime = 0;
-					this.$routeX.push({
+					this.$routeLink.push({
 						name: this.imgInfo.name,
 						url: "/pages/module/webViewApp/index",
 						params: {

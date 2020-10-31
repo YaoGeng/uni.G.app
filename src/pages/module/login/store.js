@@ -9,7 +9,7 @@ export default {
 		/* 处理各类应用列表 */
 		filterAppList: state => {
 			let topAppList 	 	= 	[], //2 首页顶部应用 4个
-				storeAppList 	= 	[], // 1 应用市场中应用
+				storeAppList 	= 	[], //1 应用市场中应用
 				userAppList 	=	[], //8 个人页应用栏应用 4个
 				setAppList	 	= 	[], //9 设置页应用
 				allAppList 		= 	[]; //全部应用

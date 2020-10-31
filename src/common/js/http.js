@@ -64,32 +64,55 @@ function ajax(req, params) {
 			},
 			success: (res) => {
 
-				if (res.statusCode == 404) {
-					uni.showToast({
-						title: "请求接口不存在",
-						icon: "none",
-						position: 'bottom'
-					})
-					reject();
-				} else if (res.statusCode == 200) {
-					if (res.data.msgState == 1) {
-						resolve(res.data);
-					} else if (res.data.msgState == 2) {
+				switch (res.statusCode) {
 
-						/* 自定义抛错 */
-						if (req.custom) {
-							reject(res.data);
-						} else {
-							uni.showToast({
-								title: res.data.msg,
-								icon: "none",
-								position: 'bottom'
-							})
-							reject(res.data);
+					case 404:
+						uni.showToast({
+							title: "请求接口错误",
+							icon: "none",
+							position: 'bottom'
+						})
+						reject();
+						break;
+						
+					case 500:
+						uni.showToast({
+							title: "请求接口不存在",
+							icon: "none",
+							position: 'bottom'
+						})
+						reject();
+						break;
+
+					case 502:
+						uni.showToast({
+							title: "请求接口不存在",
+							icon: "none",
+							position: 'bottom'
+						})
+						reject();
+						break;
+
+					case 200:
+						/* 定义msgState为后端返回接口状态码 */
+						if (res.data.msgState == 1) {
+							resolve(res.data);
+						} else if (res.data.msgState == 2) {
+	
+							/* 自定义抛错 */
+							if (req.custom) {
+								reject(res.data);
+							} else {
+								uni.showToast({
+									title: res.data.msg,
+									icon: "none",
+									position: 'bottom'
+								})
+								reject(res.data);
+							}
+	
 						}
-
-					}
-
+						break;
 				}
 
 			},
@@ -109,28 +132,13 @@ function ajax(req, params) {
 function http(req) {
 
 	let params = {
-		appKey: "GiITvn",
 		param: req.data ? JSON.stringify(req.data) : JSON.stringify({}),
 		time: new Date().getTime(),
-		secure: req.isSecure ? 1 : 0,
-		schoolId: MAIN_CONFIG.project.campusId || ""
 	};
 
 	params.sign = sign(params);
 
-	if (req.isSecure) {
-		return RSA()
-			.then((res) => {
-				let crypt = new JSEncrypt(),
-					secrets;
-				crypt.setPublicKey(res.publicKey);
-				secrets = crypt.encrypt(params.param);
-				params.param = secrets;
-				return ajax(req, params);
-			})
-	} else {
-		return ajax(req, params);
-	}
+	return ajax(req, params);
 }
 
 /**
@@ -140,7 +148,7 @@ function http(req) {
  * @property {Object} data 非必 请求参数
  * @value url 必 string  地址
  * @value custom 非必 Bulr false(默认undefind)|true  是否自定义抛错
- * @value isSecure 非必 Bulr false(默认undefind)|true  是否加密请求
+ * @value isSecure 非必 Bulr false(默认undefind)|true  是否加密请求(原定制，废弃)
  */
 export default {
 

@@ -23,7 +23,6 @@ Vue.prototype.$store = store;
 
 /* 引入路由守卫封装 */
 import router from './route/min-router.js'
-import minRouter from './route'
 Vue.use(router);
 
 
@@ -53,7 +52,6 @@ Vue.config.productionTip = false;
 App.mpType = 'app';
 
 const app = new Vue({
-	minRouter,
 	store,
 	...App
 });
